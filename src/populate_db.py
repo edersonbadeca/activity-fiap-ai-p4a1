@@ -1,6 +1,8 @@
+import csv
+
 from dotenv import load_dotenv
 
-from src.services import insert_nutrient_history
+from src.services import insert_nutrient_history, import_weather_historical_data
 
 # Load environment variables from .env file
 load_dotenv()
@@ -13,12 +15,13 @@ from models import Base
 # Database configuration
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-if(DATABASE_URL is None):
+if (DATABASE_URL is None):
     raise Exception("DATABASE_URL environment variable not set")
 
 # SQLAlchemy setup
 engine = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=engine)
+
 
 def insert_producers():
     session = Session()
@@ -29,6 +32,7 @@ def insert_producers():
     session.close()
     print("Producers inserted successfully")
 
+
 def insert_crops():
     session = Session()
     session.execute(text("""
@@ -38,6 +42,7 @@ def insert_crops():
     session.close()
     print("Crops inserted successfully")
 
+
 def insert_sensors():
     session = Session()
     session.execute(text("""
@@ -46,6 +51,7 @@ def insert_sensors():
     session.commit()
     session.close()
     print("Sensors inserted successfully")
+
 
 def insert_sensor_readings():
     session = Session()
@@ -118,6 +124,7 @@ VALUES
     session.commit()
     session.close()
     print("Sensor readings inserted successfully")
+
 
 def insert_irrigation_history():
     session = Session()
@@ -202,6 +209,39 @@ def insert_nutrients_sensor_readings():
             reading['irrigation']
         )
 
+
+def insert_weather_historical_data():
+    with open('../db/weatherHistory.csv', 'r') as file:
+        csv_reader = csv.DictReader(file)
+        for row in csv_reader:
+            date_register = row['Formatted Date']
+            summary =  row['Summary']
+            precip_type = row['Precip Type']
+            temperature = row['Temperature (C)']
+            apparent_temperature = row['Apparent Temperature (C)']
+            humidity = row['Humidity']
+            wind_speed = row['Wind Speed (km/h)']
+            wind_bearing = row['Wind Bearing (degrees)']
+            visibility_km = row['Visibility (km)']
+            loud_cover = row['Loud Cover']
+            pressure = row['Pressure (millibars)']
+            daily_summary = row['Daily Summary']
+            import_weather_historical_data(
+                date_register,
+                summary,
+                precip_type,
+                temperature,
+                apparent_temperature,
+                humidity,
+                wind_speed,
+                wind_bearing,
+                visibility_km,
+                loud_cover,
+                pressure,
+                daily_summary
+            )
+
+
 if __name__ == "__main__":
     # Create all tables
     Base.metadata.create_all(engine)
@@ -213,4 +253,5 @@ if __name__ == "__main__":
     # insert_sensors()
     # insert_sensor_readings()
     # insert_irrigation_history()
-    #insert_nutrients_sensor_readings()
+    # insert_nutrients_sensor_readings()
+    insert_weather_historical_data()

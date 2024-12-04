@@ -1,7 +1,8 @@
 from datetime import datetime
 
 from sqlalchemy.exc import SQLAlchemyError
-from models import Producers, Crops, Sensors, SensorReadings, ApplicationAdjustments, IrrigationHistory, NutrientHistory
+from models import Producers, Crops, Sensors, SensorReadings, ApplicationAdjustments, IrrigationHistory, \
+    NutrientHistory, WeatherHistoricalData
 from database import Session
 import requests
 import os
@@ -142,5 +143,42 @@ def insert_nutrient_history(temperature, humidity, ph, irrigation):
     except SQLAlchemyError as e:
         session.rollback()
         print(f"Error inserting nutrient history record: {e}")
+    finally:
+        session.close()
+
+def import_weather_historical_data(date_register,
+                summary,
+                precip_type,
+                temperature,
+                apparent_temperature,
+                humidity,
+                wind_speed,
+                wind_bearing,
+                visibility_km,
+                loud_cover,
+                pressure,
+                daily_summary):
+    session = Session()
+    try:
+        new_data = WeatherHistoricalData(
+            date_register=date_register,
+            summary=summary,
+            precip_type=precip_type,
+            temperature=temperature,
+            apparent_temperature=apparent_temperature,
+            humidity=humidity,
+            wind_speed=wind_speed,
+            wind_bearing=wind_bearing,
+            visibility_km=visibility_km,
+            loud_cover=loud_cover,
+            pressure=pressure,
+            daily_summary=daily_summary
+        )
+        session.add(new_data)
+        session.commit()
+        print("Weather historical data inserted successfully.")
+    except SQLAlchemyError as e:
+        session.rollback()
+        print(f"Error inserting weather historical data: {e}")
     finally:
         session.close()
