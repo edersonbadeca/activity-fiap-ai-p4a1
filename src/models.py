@@ -71,3 +71,14 @@ class IrrigationHistory(Base):
     timestamp = Column(TIMESTAMP, server_default=func.now(), nullable=False)
     status = Column(Enum('Ligado', 'Desligado'), nullable=False)
     humidity_value = Column(Float, nullable=False)
+
+
+class NutrientHistory(Base):
+    __tablename__ = 'NutrientHistory'
+    id = Column(Integer, Identity(start=1), primary_key=True, autoincrement=True)
+    timestamp = Column(TIMESTAMP, server_default=func.now(), nullable=False)
+    temperature = Column(Float, nullable=False)
+    humidity = Column(Float, nullable=False)
+    ph = Column(Float, nullable=False)
+    irrigation = Column(Float, nullable=False)
+    created_at = Column(TIMESTAMP, server_default=func.now(), nullable=False)

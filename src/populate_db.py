@@ -1,4 +1,7 @@
 from dotenv import load_dotenv
+
+from src.services import insert_nutrient_history
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -177,15 +180,37 @@ def insert_irrigation_history():
     session.close()
     print("Irrigation history inserted successfully")
 
+
+def insert_nutrients_sensor_readings():
+    data = [
+        {'temperature': -14.8, 'humidity': 2.5, 'ph': 10.5, 'irrigation': 1},
+        {'temperature': -14.8, 'humidity': 2.5, 'ph': 9.6, 'irrigation': 1},
+        {'temperature': -14.8, 'humidity': 2.5, 'ph': 9.3, 'irrigation': 1},
+        {'temperature': -14.8, 'humidity': 2.5, 'ph': 9.7, 'irrigation': 1},
+        {'temperature': -14.8, 'humidity': 2.5, 'ph': 9.2, 'irrigation': 1},
+        {'temperature': -14.8, 'humidity': 2.5, 'ph': 9.4, 'irrigation': 1},
+        {'temperature': -14.8, 'humidity': 2.5, 'ph': 9.0, 'irrigation': 1},
+        {'temperature': -14.8, 'humidity': 2.5, 'ph': 8.8, 'irrigation': 1},
+        {'temperature': -14.8, 'humidity': 2.5, 'ph': 8.8, 'irrigation': 1},
+        {'temperature': -14.8, 'humidity': 2.5, 'ph': 8.5, 'irrigation': 1}
+    ]
+    for reading in data:
+        insert_nutrient_history(
+            reading['temperature'],
+            reading['humidity'],
+            reading['ph'],
+            reading['irrigation']
+        )
+
 if __name__ == "__main__":
     # Create all tables
     Base.metadata.create_all(engine)
     print("All tables created successfully")
 
     # Insert sample data
-    insert_producers()
-    insert_crops()
-    insert_sensors()
-    insert_sensor_readings()
-    insert_irrigation_history()
-    
+    # insert_producers()
+    # insert_crops()
+    # insert_sensors()
+    # insert_sensor_readings()
+    # insert_irrigation_history()
+    insert_nutrients_sensor_readings()
