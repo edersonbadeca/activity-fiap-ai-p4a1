@@ -75,6 +75,7 @@ class IrrigationHistory(Base):
 
 class NutrientHistory(Base):
     __tablename__ = 'NutrientHistory'
+
     id = Column(Integer, Identity(start=1), primary_key=True, autoincrement=True)
     timestamp = Column(TIMESTAMP, server_default=func.now(), nullable=False)
     temperature = Column(Float, nullable=False)
@@ -82,3 +83,20 @@ class NutrientHistory(Base):
     ph = Column(Float, nullable=False)
     irrigation = Column(Float, nullable=False)
     created_at = Column(TIMESTAMP, server_default=func.now(), nullable=False)
+
+
+class WeatherHistoricalData(Base):
+    __tablename__ = 'WeatherHistoricalData'
+
+    id_weather = Column(Integer, primary_key=True, autoincrement=True)
+    date_register = Column(String(255), nullable=False)
+    location = Column(String(255), nullable=False)
+    min_temp = Column(Float)
+    max_temp = Column(Float)
+    rainfall = Column(Float)
+    wind_speed = Column(Float)
+    humidity = Column(Float)
+    pressure = Column(Float)
+    cloud = Column(Float)
+    weather_condition = Column(String(50))
+    inserted_at = Column(TIMESTAMP, server_default=func.now(), nullable=False)

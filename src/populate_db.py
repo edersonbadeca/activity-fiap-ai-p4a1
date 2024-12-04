@@ -213,4 +213,4 @@ if __name__ == "__main__":
     # insert_sensors()
     # insert_sensor_readings()
     # insert_irrigation_history()
-    insert_nutrients_sensor_readings()
+    #insert_nutrients_sensor_readings()
