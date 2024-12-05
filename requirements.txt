@@ -40,3 +40,5 @@ Werkzeug==3.0.6
 zipp==3.20.2
 streamlit
 scikit-learn
+matplotlib
+seaborn
