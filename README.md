@@ -17,9 +17,14 @@ For information on sensor substitutions and their impact on system accuracy, see
 
 ### Circuit
 
-![Circuit](./assets/circuit.png)
+![Circuit](./assets/circuit_v2.png)
+
+### VERSION_V2
+Check the [VERSION_V2.md](docs/VERSION_V2.md) file for the latest updates and technical details.
+
 
 ### Technical Details
+# Deprecated - This version is outdated. Please refer to [VERSION_V2.md](docs/VERSION_V2.md) for the latest updates.
 
 1. **Circuit and Embedded Code**:
    - Implemented with [Wokwi](https://wokwi.com/).
@@ -71,8 +76,8 @@ Consider installing these VS Code extensions:
 To clone the repository to your local machine:
 
 ```sh
-git clone https://github.com/farm-solutions/activity-fiap-ai-p3a1.git
-cd activity-fiap-ai-p3a1/
+git clone https://github.com/edersonbadeca/activity-fiap-ai-p4a1.git
+cd activity-fiap-ai-p4a1/
 ```
 
 ## Usage
@@ -125,7 +130,7 @@ cd activity-fiap-ai-p3a1/
    - Irrigation recommendations are adjusted based on humidity and rain forecast.
 
 3. **ESP32**:
-   - Project link on Wokwi: [Wokwi Project](https://wokwi.com/projects/413455638981848065)
+   - Project link on Wokwi: [Wokwi Project](https://wokwi.com/projects/416219390508313601)
    - Access the code in the `embedded/` folder.
 
 ## Observations
@@ -138,7 +143,6 @@ cd activity-fiap-ai-p3a1/
 - [Ederson Luiz Badeca dos Santos](https://www.linkedin.com/in/ederson-badeca/)
 - [Felipe Soares Nascimento](https://www.linkedin.com/in/digitalmanagerfelipesoares/)
 - [Lucas Ferreira Hillesheim](https://www.linkedin.com/in/lfhillesheim/)
-- [Luís Emidio](https://www.linkedin.com/in/luisfuturist/)
 
 ## Professors
 
