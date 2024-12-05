@@ -262,10 +262,10 @@ if __name__ == "__main__":
     print("All tables created successfully")
 
     # Insert sample data
-    # insert_producers()
-    # insert_crops()
-    # insert_sensors()
-    # insert_sensor_readings()
-    # insert_irrigation_history()
+    insert_producers()
+    insert_crops()
+    insert_sensors()
+    insert_sensor_readings()
+    insert_irrigation_history()
     insert_nutrients_sensor_readings()
-    # insert_weather_historical_data()
+    insert_weather_historical_data()
