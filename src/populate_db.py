@@ -1,4 +1,5 @@
 import csv
+import random
 
 from dotenv import load_dotenv
 
@@ -200,7 +201,20 @@ def insert_nutrients_sensor_readings():
         {'temperature': -14.8, 'humidity': 2.5, 'ph': 8.8, 'irrigation': 1},
         {'temperature': -14.8, 'humidity': 2.5, 'ph': 8.8, 'irrigation': 1},
         {'temperature': -14.8, 'humidity': 2.5, 'ph': 8.5, 'irrigation': 1}
+
     ]
+    irrigation = False
+    random_value = lambda: round(random.uniform(-40.0, 50.9), 2)
+    for x in range(1, 5000):
+        humidity = random_value()
+        if humidity < 30.0:
+            irrigation = True
+        else:
+            irrigation = False
+
+        new_data = {'temperature': random_value(), 'humidity': random_value(), 'ph': random_value(), 'irrigation': irrigation}
+        data.append(new_data)
+
     for reading in data:
         insert_nutrient_history(
             reading['temperature'],
@@ -253,5 +267,5 @@ if __name__ == "__main__":
     # insert_sensors()
     # insert_sensor_readings()
     # insert_irrigation_history()
-    # insert_nutrients_sensor_readings()
-    insert_weather_historical_data()
+    insert_nutrients_sensor_readings()
+    # insert_weather_historical_data()
