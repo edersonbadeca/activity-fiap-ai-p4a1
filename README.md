@@ -17,7 +17,7 @@ For information on sensor substitutions and their impact on system accuracy, see
 
 ### Circuit
 
-![Circuit](./assets/circuit_v2.png)
+![Circuit](./assets/circuit.png)
 
 ### VERSION_V2
 Check the [VERSION_V2.md](docs/VERSION_V2.md) file for the latest updates and technical details.
