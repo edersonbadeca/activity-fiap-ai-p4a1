@@ -9,7 +9,7 @@ O objetivo principal é otimizar o uso de água em sistemas agrícolas, utilizan
 
 ### Circuito
 
-![Circuit](./assets/circuit_v2.png)
+![Circuit](../assets/circuit_v2.png)
 
 ### 1. Coleta de Dados
 Os dados são coletados de sensores conectados ao ESP32 e armazenados em um banco de dados Oracle. Os dados incluem:
@@ -72,10 +72,10 @@ cd src/web-app/
 streamlit app.py
 ```
 ### Dashboard
-![Inicio](assets/streamlit_1.png)
-![Meteorologia](assets/streamlit_2.png)
-![Previsao](assets/streamlit_3.png)
-![Gráficos](assets/streamlit_4.png)
+![Inicio](../assets/streamlit_1.png)
+![Meteorologia](../assets/streamlit_2.png)
+![Previsao](../assets/streamlit_3.png)
+![Gráficos](../assets/streamlit_4.png)
 
 Acesse o sistema no navegador, no endereço: `http://localhost:8501`.
 
