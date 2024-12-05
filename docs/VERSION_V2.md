@@ -6,7 +6,10 @@ Este projeto é um sistema de irrigação inteligente que utiliza dados coletado
 
 O objetivo principal é otimizar o uso de água em sistemas agrícolas, utilizando um modelo preditivo baseado em dados de sensores de umidade, temperatura, pH e outros fatores ambientais.
 
-## Estrutura do Projeto
+
+### Circuito
+
+![Circuit](./assets/circuit_v2.png)
 
 ### 1. Coleta de Dados
 Os dados são coletados de sensores conectados ao ESP32 e armazenados em um banco de dados Oracle. Os dados incluem:
@@ -68,6 +71,11 @@ Para iniciar o servidor Streamlit e visualizar a interface:
 cd src/web-app/
 streamlit app.py
 ```
+### Dashboard
+![Inicio](assets/streamlit_1.png)
+![Meteorologia](assets/streamlit_2.png)
+![Previsao](assets/streamlit_3.png)
+![Gráficos](assets/streamlit_4.png)
 
 Acesse o sistema no navegador, no endereço: `http://localhost:8501`.
 
